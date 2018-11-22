@@ -86,3 +86,14 @@ RSpec.describe Lista do
     end
     
 end
+
+RSpec.describe Persona do
+    
+    before :all do
+        @man = Persona.new("Juan", "Arvelo", 27, "Masculino")    
+    end
+    
+    it "Existe la clase Persona." do
+       expect(@man.class).to eq(Persona) 
+    end
+end
