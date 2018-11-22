@@ -94,6 +94,11 @@ RSpec.describe Persona do
     end
     
     it "Existe la clase Persona." do
-       expect(@man.class).to eq(Persona) 
+      expect(@man.class).to eq(Persona) 
     end
+    
+    it "Se puede imprimir." do
+      expect(@man.to_s).to eq("Juan Arvelo - Edad: 27 años - Género: Masculino.")
+    end
+    
 end

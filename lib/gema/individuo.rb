@@ -8,6 +8,8 @@ class Persona
         @edad = edad
         @genero = genero
     end
+    
+
    
     
 end
