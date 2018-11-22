@@ -119,3 +119,15 @@ RSpec.describe Persona do
     
 end
 
+RSpec.describe Paciente do
+  
+  before :all do
+    @individuo = Paciente.new("Juan", "Arvelo", "Masculino", 27, 77, 1.60) #nombre, apellido, sexo, edad, peso, talla
+  end
+  
+  it "Existe la clase Paciente." do
+    expect(@individuo.class).to eq(Paciente)
+  end
+  
+  
+end
