@@ -101,4 +101,21 @@ RSpec.describe Persona do
       expect(@man.to_s).to eq("Juan Arvelo - Edad: 27 años - Género: Masculino.")
     end
     
+    it "Prueba de jerarquía ---- Persona < Object." do
+      expect(@man.class.superclass).to eq(Object)
+    end
+    
+    it "Prueba de tipo ---- Object = Class." do
+      expect(@man.class.superclass.class).to eq(Class)
+    end
+    
+    it "Prueba de jerarquía ---- Object < BasicObject." do
+      expect(@man.class.superclass.superclass).to eq(BasicObject)
+    end
+    
+    it "Prueba de tipo ---- BasicObject = Class." do
+      expect(@man.class.superclass.superclass.class).to eq(Class)
+    end
+    
 end
+
