@@ -9,7 +9,9 @@ class Persona
         @genero = genero
     end
     
-
+    def to_s
+       return %Q(#{@nombre} #{@apellido} - Edad: #{@edad} años - Género: #{@genero}.)
+    end
    
     
 end
