@@ -17,3 +17,16 @@ class Persona
 end
 
 
+class Paciente < Persona
+   
+   attr_reader :peso, :talla
+   
+   def initialize(nombre, apellido, genero, edad, peso, talla)
+       super(nombre, apellido, genero, genero)
+       @peso = peso
+       @talla = talla
+    end
+   
+    
+    
+end
