@@ -27,6 +27,27 @@ class Paciente < Persona
        @talla = talla
     end
    
+    def imc_calculo
+       return @peso/(@talla*@talla) 
+    end
+    
+    def imc_clasificar
+        imc = imc_calculo()
+        tipo = "";
+        if (imc<18.5)
+          tipo = "Delgado"
+        elsif(imc == (18.5..24.9))
+          tipo = "Aceptable"
+        elsif(imc == (25.0..29.9))
+          tipo = "Sobrepeso"
+        elsif (imc>29.9)
+          tipo = "Obesidad"
+        else
+          return "Error clasificando el imc:  #{imc}."
+        end
+        
+        return tipo
+    end
     
     
 end
