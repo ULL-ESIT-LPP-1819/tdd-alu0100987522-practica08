@@ -153,5 +153,23 @@ RSpec.describe Paciente do
     expect(@individuo.to_s()).to eq("Juan Arvelo - Edad: 27 años - Género: Masculino - Peso: 77 kg - Talla: 1.6 m.")
   end
   
+  it "Se puede insertar a un Paciente en una Lista." do
+    list = Lista.new()
+    list.push_head(@individuo)
+    expect(list.head.value.class).to eq(Paciente)
+  end
+  
+  it "Se puede extraer a un Paciente de la Lista." do
+    list = Lista.new()
+    list.push_head(@individuo)
+    expect(list.pop_head().class).to eq(Paciente)
+  end
+  
+  it "Se puede imprimir los datos de un Paciente, desde una Lista." do
+    list = Lista.new()
+    list.push_head(@individuo)
+    expect(list.to_s()).to eq("Juan Arvelo - Edad: 27 años - Género: Masculino - Peso: 77 kg - Talla: 1.6 m.")    
+  end
+  
   
 end
