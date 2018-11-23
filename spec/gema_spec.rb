@@ -145,5 +145,9 @@ RSpec.describe Paciente do
     expect(@individuo.imc_calculo()).to eq(77/(1.6*1.6))
   end
   
+  it "Se puede clasificar un individuo en base a su IMC." do
+    expect(@individuo.imc_clasificar()).to eq("Obesidad")
+  end  
+  
   
 end
