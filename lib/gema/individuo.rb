@@ -22,7 +22,7 @@ class Paciente < Persona
     attr_reader :peso, :talla
    
     def initialize(nombre, apellido, edad, genero, peso, talla)
-       super(nombre, apellido, genero, genero)
+       super(nombre, apellido, edad, genero)
        @peso = peso
        @talla = talla
     end
@@ -49,5 +49,6 @@ class Paciente < Persona
         return tipo
     end
     
+
     
 end

@@ -145,9 +145,13 @@ RSpec.describe Paciente do
     expect(@individuo.imc_calculo()).to eq(77/(1.6*1.6))
   end
   
-  it "Se puede clasificar un individuo en base a su IMC." do
+  it "Se puede clasificar un paciente en base a su IMC." do
     expect(@individuo.imc_clasificar()).to eq("Obesidad")
   end  
+ 
+  it "Se puede imprimir por pantalla los datos de un Paciente." do
+    expect(@individuo.to_s()).to eq("Juan Arvelo - Edad: 27 años - Género: Masculino - Peso: 77 kg - Talla: 1.6 m.")
+  end
   
   
 end
