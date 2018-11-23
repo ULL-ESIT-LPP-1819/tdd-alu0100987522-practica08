@@ -72,14 +72,13 @@ class Lista
     end
     
     def to_s
-        string = []
-        aux = @tail
+        str = @tail.value.to_s()
+        aux = @tail.next
         while(aux)
-            string.push(aux.value.nombre)
+            str << aux.value.to_s()
             aux = aux.next
         end
-        
-        return string
+        return str
     end
     
     

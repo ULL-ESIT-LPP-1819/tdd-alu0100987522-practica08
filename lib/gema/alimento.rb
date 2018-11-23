@@ -20,6 +20,6 @@ class Alimento
   end 
   
   def to_s
-    "Nombre: #{@nombre} --- Grasas: #{@grasas} ; Saturadas: #{@gsat} -- Hidratos de Carbono: #{@carbh} -- Azucar: #{@azucar} -- Proteínas: #{@protein} -- Sal: #{@sal}"
+    return %Q"#{@nombre} --- Grasas: #{@grasas} ; Saturadas: #{@gsat} -- Hidratos de Carbono: #{@carbh} -- Azucar: #{@azucar} -- Proteínas: #{@protein} -- Sal: #{@sal}.  "
   end
 end

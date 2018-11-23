@@ -16,7 +16,7 @@ RSpec.describe Alimento do
   end
   
   it "Se puede imprimir la cadena de Alimento." do
-    expect(@magdalena.to_s).to eq("Nombre: Magdalena --- Grasas: 50 ; Saturadas: 30 -- Hidratos de Carbono: 10 -- Azucar: 13 -- Proteínas: 20 -- Sal: 5")
+    expect(@magdalena.to_s).to eq("Magdalena --- Grasas: 50 ; Saturadas: 30 -- Hidratos de Carbono: 10 -- Azucar: 13 -- Proteínas: 20 -- Sal: 5.  ")
   end
 end
 
@@ -79,7 +79,7 @@ RSpec.describe Lista do
             @lista.push_head(Alimento.new("Leche", 32, 30, 10, 15, 20, 3))
             @lista.push_head(Alimento.new("Millos", 37, 29, 14, 14, 23, 7))
             
-            expect(@lista.to_s()).to eq(["Magdalena", "Leche", "Millos"])
+            expect(@lista.to_s()).to eq("Magdalena --- Grasas: 50 ; Saturadas: 30 -- Hidratos de Carbono: 10 -- Azucar: 13 -- Proteínas: 20 -- Sal: 4.  Leche --- Grasas: 32 ; Saturadas: 30 -- Hidratos de Carbono: 10 -- Azucar: 15 -- Proteínas: 20 -- Sal: 3.  Millos --- Grasas: 37 ; Saturadas: 29 -- Hidratos de Carbono: 14 -- Azucar: 14 -- Proteínas: 23 -- Sal: 7.  ")
             
         end
         
@@ -122,11 +122,27 @@ end
 RSpec.describe Paciente do
   
   before :all do
-    @individuo = Paciente.new("Juan", "Arvelo", "Masculino", 27, 77, 1.60) #nombre, apellido, sexo, edad, peso, talla
+    @individuo = Paciente.new("Juan", "Arvelo", 27,"Masculino", 77, 1.60) #nombre, apellido, sexo, edad, peso, talla
   end
   
   it "Existe la clase Paciente." do
     expect(@individuo.class).to eq(Paciente)
+  end
+  
+  it "Prueba de tipo: Persona no es tipo Paciente." do
+    expect(@man.is_a?Paciente).to eq(false)
+  end  
+  
+  it "Prueba de tipo: Paciente es tipo Persona" do
+    expect(@individuo.is_a?Persona).to eq(true)
+  end
+  
+  it "Prueba de jerarquía: Paciente < Persona." do
+    expect(@individuo.class.superclass).to eq(Persona)
+  end
+
+  it "Se puede hacer el calculo del IMC." do
+    expect(@individuo.imc_calculo()).to eq(77/(1.6*1.6))
   end
   
   
