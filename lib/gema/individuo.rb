@@ -49,6 +49,8 @@ class Paciente < Persona
         return tipo
     end
     
-
+    def to_s
+        return %Q(#{@nombre} #{@apellido} - Edad: #{@edad} años - Género: #{@genero} - Peso: #{@peso} kg - Talla: #{@talla} m.)
+    end
     
 end
