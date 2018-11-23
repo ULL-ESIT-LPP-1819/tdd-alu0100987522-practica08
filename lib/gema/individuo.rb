@@ -27,7 +27,9 @@ class Paciente < Persona
        @talla = talla
     end
    
-
+    def imc_calculo
+       return @peso/(@talla*@talla) 
+    end
     
     
 end
