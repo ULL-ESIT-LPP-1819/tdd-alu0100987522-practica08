@@ -36,9 +36,9 @@ class Paciente < Persona
         tipo = "";
         if (imc<18.5)
           tipo = "Delgado"
-        elsif(imc == (18.5..24.9))
+        elsif(imc.between?(18.5, 24.9))
           tipo = "Aceptable"
-        elsif(imc == (25.0..29.9))
+        elsif(imc.between?(25.0, 29.9))
           tipo = "Sobrepeso"
         elsif (imc>29.9)
           tipo = "Obesidad"

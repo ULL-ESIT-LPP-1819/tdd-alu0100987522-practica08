@@ -171,5 +171,44 @@ RSpec.describe Paciente do
     expect(list.to_s()).to eq("Juan Arvelo - Edad: 27 años - Género: Masculino - Peso: 77 kg - Talla: 1.6 m.")    
   end
   
+  it "Se puede clasificar una Lista de Pacientes según su IMC." do
+    list = Lista.new()
+    list.push_head(@individuo) #El individuo que ya teniamos creado = Obesidad
+    list.push_head(Paciente.new("Alberto", "Sainz", 33, "Masculino", 49, 1.69)) # = Delgado
+    list.push_head(Paciente.new("Marta", "Cruz", 29, "Femenino", 55, 1.60)) # = Aceptable
+    list.push_head(Paciente.new("Sara", "Pérez", 35, "Femenino", 80, 1.7)) # = Sobrepeso
+    list.push_head(Paciente.new("Rubén", "Solís", 25, "Masculino", 90, 1.65)) # = Obesidad
+    pac_delgado = []
+    pac_aceptable = []
+    pac_sobrepeso = []
+    pac_obesidad = []
+    
+    while list.head != nil do
+    
+      aux = list.pop_head() 
+      str = %Q(#{aux.nombre} #{aux.apellido} - IMC: #{aux.imc_calculo()})
+      
+      case aux.imc_clasificar()
+      when "Delgado"
+        pac_delgado.push(str)
+      when "Aceptable"
+        pac_aceptable.push(str)
+      when "Sobrepeso"
+        pac_sobrepeso.push(str)
+      when "Obesidad"
+        pac_obesidad.push(str)
+      else
+        puts "Se intenta guardar un valor incorrecto: #{aux.imc_clasificar}"
+      end
+      
+    end
+    
+    expect(pac_delgado.to_s.gsub('"', '')).to eq("[Alberto Sainz - IMC: 17.15626203564301]")
+    expect(pac_aceptable.to_s.gsub('"', '')).to eq("[Marta Cruz - IMC: 21.484374999999996]")
+    expect(pac_sobrepeso.to_s.gsub('"', '')).to eq("[Sara Pérez - IMC: 27.68166089965398]")
+    expect(pac_obesidad.to_s.gsub('"', '')).to eq("[Rubén Solís - IMC: 33.057851239669425, Juan Arvelo - IMC: 30.078124999999993]")
+    
+  end  
+  
   
 end
