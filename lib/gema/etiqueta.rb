@@ -25,4 +25,8 @@ class Etiqueta
     return %Q"#{@nombre} --- Grasas: #{@grasas} ; Saturadas: #{@gsat} -- Hidratos de Carbono: #{@carbh} -- Azucar: #{@azucar} -- Proteínas: #{@protein} -- Sal: #{@sal}.  "
   end
   
+  def <=>(another)
+    val_energetico <=> another.val_energetico
+  end
+  
 end
