@@ -1,4 +1,4 @@
-class Alimento
+class Etiqueta 
   
   attr_reader :nombre, :grasas, :gsat, :carbh, :azucar, :protein, :sal
   
