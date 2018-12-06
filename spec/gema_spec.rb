@@ -43,8 +43,13 @@ RSpec.describe Etiqueta do
     it "Compara si el valor energético es menor o igual (<=)." do
       expect(@magdalena<=@millos).to eq(false)
     end
-
+    
+    it "Compara si el valor energético está entre (between?) el rango de otros dos." do
+      expect(@magdalena.between?(@millos, @jamon)).to eq(true)
+    end
+    
   end
+  
 end
 
 RSpec.describe Lista do
