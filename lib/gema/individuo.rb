@@ -18,6 +18,8 @@ end
 
 
 class Paciente < Persona
+    
+ 
    
     attr_reader :peso, :talla
    
@@ -53,4 +55,5 @@ class Paciente < Persona
         return %Q(#{@nombre} #{@apellido} - Edad: #{@edad} años - Género: #{@genero} - Peso: #{@peso} kg - Talla: #{@talla} m.)
     end
     
+
 end

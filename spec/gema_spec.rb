@@ -129,7 +129,7 @@ RSpec.describe Persona do
         @man = Persona.new("Juan", "Arvelo", 27, "Masculino")    
     end
     
-    context "Persona pruebas práctica 9." do
+    context "Persona pruebas práctica 8." do
       it "Existe la clase Persona." do
         expect(@man.class).to eq(Persona) 
       end
@@ -160,6 +160,8 @@ RSpec.describe Paciente do
   
   before :all do
     @individuo = Paciente.new("Juan", "Arvelo", 27,"Masculino", 77, 1.60) #nombre, apellido, sexo, edad, peso, talla
+    @individuo2 = Paciente.new("Marta", "Cruz", 29, "Femenino", 55, 1.60)
+    @individu3 = Paciente.new("Rubén", "Solís", 25, "Masculino", 90, 1.65)
   end
   
   context "Paciente pruebas práctica 8." do
@@ -250,6 +252,10 @@ RSpec.describe Paciente do
   end
   
   context "Paciente pruebas práctica 9." do
+    
+    it "Compara si el IMC es igual (==)." do
+      expect(@individuo==@individuo2).to eq(false)
+    end
     
   end
   
