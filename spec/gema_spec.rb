@@ -4,19 +4,30 @@ RSpec.describe Etiqueta do
 
   before :all do
   @magdalena = Etiqueta.new("Magdalena", 50, 30, 10, 13, 20, 5)  
+  @millos = Etiqueta.new("Millos", 37, 29, 14, 14, 23, 7)
+  @jamon = Etiqueta.new("Jamón", 52, 40, 10, 16, 20, 10)
   end
   
-
-  it "Existe etiqueta." do
-    expect(@magdalena.is_a?Etiqueta).to eq(true)
+  context "Etiqueta pruebas práctica 8." do
+    it "Existe etiqueta." do
+      expect(@magdalena.is_a?Etiqueta).to eq(true)
+    end
+    
+    it "Existe cantidad de sal." do
+      expect(@magdalena.sal).to eq(5)
+    end
+    
+    it "Se puede imprimir la cadena de Etiqueta." do
+      expect(@magdalena.to_s).to eq("Magdalena --- Grasas: 50 ; Saturadas: 30 -- Hidratos de Carbono: 10 -- Azucar: 13 -- Proteínas: 20 -- Sal: 5.  ")
+    end
   end
   
-  it "Existe cantidad de sal." do
-    expect(@magdalena.sal).to eq(5)
-  end
-  
-  it "Se puede imprimir la cadena de Etiqueta." do
-    expect(@magdalena.to_s).to eq("Magdalena --- Grasas: 50 ; Saturadas: 30 -- Hidratos de Carbono: 10 -- Azucar: 13 -- Proteínas: 20 -- Sal: 5.  ")
+  context "Etiqueta pruebas práctica 9." do
+    
+    it "Compara si tiene el mismo(==) valor energético." do
+      expect(@magdalena==@millos).to eq(false)
+    end
+    
   end
 end
 
@@ -27,7 +38,7 @@ RSpec.describe Lista do
        @lista = Lista.new()
     end
     
-    context "Lista de etiquetas." do
+    context "Lista de etiquetas, práctica 8" do
     
         it "Clase lista tiene atributos." do
            expect(@lista).to have_attributes(:head  => nil, :tail => nil)
@@ -85,6 +96,10 @@ RSpec.describe Lista do
         
     end
     
+    context "Listas pruebas práctica 9." do
+      
+    end
+    
 end
 
 RSpec.describe Persona do
@@ -93,30 +108,31 @@ RSpec.describe Persona do
         @man = Persona.new("Juan", "Arvelo", 27, "Masculino")    
     end
     
-    it "Existe la clase Persona." do
-      expect(@man.class).to eq(Persona) 
+    context "Persona pruebas práctica 9." do
+      it "Existe la clase Persona." do
+        expect(@man.class).to eq(Persona) 
+      end
+      
+      it "Se puede imprimir." do
+        expect(@man.to_s).to eq("Juan Arvelo - Edad: 27 años - Género: Masculino.")
+      end
+      
+      it "Prueba de jerarquía ---- Persona < Object." do
+        expect(@man.class.superclass).to eq(Object)
+      end
+      
+      it "Prueba de tipo ---- Object = Class." do
+        expect(@man.class.superclass.class).to eq(Class)
+      end
+      
+      it "Prueba de jerarquía ---- Object < BasicObject." do
+        expect(@man.class.superclass.superclass).to eq(BasicObject)
+      end
+      
+      it "Prueba de tipo ---- BasicObject = Class." do
+        expect(@man.class.superclass.superclass.class).to eq(Class)
+      end
     end
-    
-    it "Se puede imprimir." do
-      expect(@man.to_s).to eq("Juan Arvelo - Edad: 27 años - Género: Masculino.")
-    end
-    
-    it "Prueba de jerarquía ---- Persona < Object." do
-      expect(@man.class.superclass).to eq(Object)
-    end
-    
-    it "Prueba de tipo ---- Object = Class." do
-      expect(@man.class.superclass.class).to eq(Class)
-    end
-    
-    it "Prueba de jerarquía ---- Object < BasicObject." do
-      expect(@man.class.superclass.superclass).to eq(BasicObject)
-    end
-    
-    it "Prueba de tipo ---- BasicObject = Class." do
-      expect(@man.class.superclass.superclass.class).to eq(Class)
-    end
-    
 end
 
 RSpec.describe Paciente do
@@ -125,90 +141,95 @@ RSpec.describe Paciente do
     @individuo = Paciente.new("Juan", "Arvelo", 27,"Masculino", 77, 1.60) #nombre, apellido, sexo, edad, peso, talla
   end
   
-  it "Existe la clase Paciente." do
-    expect(@individuo.class).to eq(Paciente)
-  end
-  
-  it "Prueba de tipo: Persona no es tipo Paciente." do
-    expect(@man.is_a?Paciente).to eq(false)
-  end  
-  
-  it "Prueba de tipo: Paciente es tipo Persona" do
-    expect(@individuo.is_a?Persona).to eq(true)
-  end
-  
-  it "Prueba de jerarquía: Paciente < Persona." do
-    expect(@individuo.class.superclass).to eq(Persona)
-  end
-
-  it "Se puede hacer el calculo del IMC." do
-    expect(@individuo.imc_calculo()).to eq(77/(1.6*1.6))
-  end
-  
-  it "Se puede clasificar un paciente en base a su IMC." do
-    expect(@individuo.imc_clasificar()).to eq("Obesidad")
-  end  
- 
-  it "Se puede imprimir por pantalla los datos de un Paciente." do
-    expect(@individuo.to_s()).to eq("Juan Arvelo - Edad: 27 años - Género: Masculino - Peso: 77 kg - Talla: 1.6 m.")
-  end
-  
-  it "Se puede insertar a un Paciente en una Lista." do
-    list = Lista.new()
-    list.push_head(@individuo)
-    expect(list.head.value.class).to eq(Paciente)
-  end
-  
-  it "Se puede extraer a un Paciente de la Lista." do
-    list = Lista.new()
-    list.push_head(@individuo)
-    expect(list.pop_head().class).to eq(Paciente)
-  end
-  
-  it "Se puede imprimir los datos de un Paciente, desde una Lista." do
-    list = Lista.new()
-    list.push_head(@individuo)
-    expect(list.to_s()).to eq("Juan Arvelo - Edad: 27 años - Género: Masculino - Peso: 77 kg - Talla: 1.6 m.")    
-  end
-  
-  it "Se puede clasificar una Lista de Pacientes según su IMC." do
-    list = Lista.new()
-    list.push_head(@individuo) #El individuo que ya teniamos creado = Obesidad
-    list.push_head(Paciente.new("Alberto", "Sainz", 33, "Masculino", 49, 1.69)) # = Delgado
-    list.push_head(Paciente.new("Marta", "Cruz", 29, "Femenino", 55, 1.60)) # = Aceptable
-    list.push_head(Paciente.new("Sara", "Pérez", 35, "Femenino", 80, 1.7)) # = Sobrepeso
-    list.push_head(Paciente.new("Rubén", "Solís", 25, "Masculino", 90, 1.65)) # = Obesidad
-    pac_delgado = []
-    pac_aceptable = []
-    pac_sobrepeso = []
-    pac_obesidad = []
-    
-    while list.head != nil do
-    
-      aux = list.pop_head() 
-      str = %Q(#{aux.nombre} #{aux.apellido} - IMC: #{aux.imc_calculo()})
-      
-      case aux.imc_clasificar()
-      when "Delgado"
-        pac_delgado.push(str)
-      when "Aceptable"
-        pac_aceptable.push(str)
-      when "Sobrepeso"
-        pac_sobrepeso.push(str)
-      when "Obesidad"
-        pac_obesidad.push(str)
-      else
-        puts "Se intenta guardar un valor incorrecto: #{aux.imc_clasificar}"
-      end
-      
+  context "Paciente pruebas práctica 8." do
+    it "Existe la clase Paciente." do
+      expect(@individuo.class).to eq(Paciente)
     end
     
-    expect(pac_delgado.to_s.gsub('"', '')).to eq("[Alberto Sainz - IMC: 17.15626203564301]")
-    expect(pac_aceptable.to_s.gsub('"', '')).to eq("[Marta Cruz - IMC: 21.484374999999996]")
-    expect(pac_sobrepeso.to_s.gsub('"', '')).to eq("[Sara Pérez - IMC: 27.68166089965398]")
-    expect(pac_obesidad.to_s.gsub('"', '')).to eq("[Rubén Solís - IMC: 33.057851239669425, Juan Arvelo - IMC: 30.078124999999993]")
+    it "Prueba de tipo: Persona no es tipo Paciente." do
+      expect(@man.is_a?Paciente).to eq(false)
+    end  
     
-  end  
+    it "Prueba de tipo: Paciente es tipo Persona" do
+      expect(@individuo.is_a?Persona).to eq(true)
+    end
+    
+    it "Prueba de jerarquía: Paciente < Persona." do
+      expect(@individuo.class.superclass).to eq(Persona)
+    end
   
+    it "Se puede hacer el calculo del IMC." do
+      expect(@individuo.imc_calculo()).to eq(77/(1.6*1.6))
+    end
+    
+    it "Se puede clasificar un paciente en base a su IMC." do
+      expect(@individuo.imc_clasificar()).to eq("Obesidad")
+    end  
+   
+    it "Se puede imprimir por pantalla los datos de un Paciente." do
+      expect(@individuo.to_s()).to eq("Juan Arvelo - Edad: 27 años - Género: Masculino - Peso: 77 kg - Talla: 1.6 m.")
+    end
+    
+    it "Se puede insertar a un Paciente en una Lista." do
+      list = Lista.new()
+      list.push_head(@individuo)
+      expect(list.head.value.class).to eq(Paciente)
+    end
+    
+    it "Se puede extraer a un Paciente de la Lista." do
+      list = Lista.new()
+      list.push_head(@individuo)
+      expect(list.pop_head().class).to eq(Paciente)
+    end
+    
+    it "Se puede imprimir los datos de un Paciente, desde una Lista." do
+      list = Lista.new()
+      list.push_head(@individuo)
+      expect(list.to_s()).to eq("Juan Arvelo - Edad: 27 años - Género: Masculino - Peso: 77 kg - Talla: 1.6 m.")    
+    end
+    
+    it "Se puede clasificar una Lista de Pacientes según su IMC." do
+      list = Lista.new()
+      list.push_head(@individuo) #El individuo que ya teniamos creado = Obesidad
+      list.push_head(Paciente.new("Alberto", "Sainz", 33, "Masculino", 49, 1.69)) # = Delgado
+      list.push_head(Paciente.new("Marta", "Cruz", 29, "Femenino", 55, 1.60)) # = Aceptable
+      list.push_head(Paciente.new("Sara", "Pérez", 35, "Femenino", 80, 1.7)) # = Sobrepeso
+      list.push_head(Paciente.new("Rubén", "Solís", 25, "Masculino", 90, 1.65)) # = Obesidad
+      pac_delgado = []
+      pac_aceptable = []
+      pac_sobrepeso = []
+      pac_obesidad = []
+      
+      while list.head != nil do
+      
+        aux = list.pop_head() 
+        str = %Q(#{aux.nombre} #{aux.apellido} - IMC: #{aux.imc_calculo()})
+        
+        case aux.imc_clasificar()
+        when "Delgado"
+          pac_delgado.push(str)
+        when "Aceptable"
+          pac_aceptable.push(str)
+        when "Sobrepeso"
+          pac_sobrepeso.push(str)
+        when "Obesidad"
+          pac_obesidad.push(str)
+        else
+          puts "Se intenta guardar un valor incorrecto: #{aux.imc_clasificar}"
+        end
+        
+      end
+      
+      expect(pac_delgado.to_s.gsub('"', '')).to eq("[Alberto Sainz - IMC: 17.15626203564301]")
+      expect(pac_aceptable.to_s.gsub('"', '')).to eq("[Marta Cruz - IMC: 21.484374999999996]")
+      expect(pac_sobrepeso.to_s.gsub('"', '')).to eq("[Sara Pérez - IMC: 27.68166089965398]")
+      expect(pac_obesidad.to_s.gsub('"', '')).to eq("[Rubén Solís - IMC: 33.057851239669425, Juan Arvelo - IMC: 30.078124999999993]")
+      
+    end  
+  end
+  
+  context "Paciente pruebas práctica 9." do
+    
+  end
   
 end

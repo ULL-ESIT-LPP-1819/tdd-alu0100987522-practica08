@@ -1,5 +1,7 @@
 class Etiqueta 
   
+  include Comparable
+  
   attr_reader :nombre, :grasas, :gsat, :carbh, :azucar, :protein, :sal
   
   
@@ -16,10 +18,11 @@ class Etiqueta
   end
   
   def val_energetico
-    (grasas*9+carbs*4+protein*4)
+    (grasas*9+carbh*4+protein*4)
   end 
   
   def to_s
     return %Q"#{@nombre} --- Grasas: #{@grasas} ; Saturadas: #{@gsat} -- Hidratos de Carbono: #{@carbh} -- Azucar: #{@azucar} -- Proteínas: #{@protein} -- Sal: #{@sal}.  "
   end
+  
 end
