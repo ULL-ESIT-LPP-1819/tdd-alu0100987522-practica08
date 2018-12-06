@@ -272,7 +272,10 @@ RSpec.describe Paciente do
     it "Compara si el IMC es menor o igual (<=)." do
       expect(@individuo<=@individuo2).to eq(false)
     end
-
+    
+    it "Compara si el IMC está dentro de un rango (between?)." do
+      expect(@individuo.between?(@individuo2, @individuo3)).to eq(true)
+    end
     
   end
   
