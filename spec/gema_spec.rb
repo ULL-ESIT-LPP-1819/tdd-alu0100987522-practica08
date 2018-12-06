@@ -28,7 +28,19 @@ RSpec.describe Etiqueta do
       expect(@magdalena==@millos).to eq(false)
     end
     
+    it "Compara si el valor energético es mayor (>)." do
+      expect(@magdalena>@millos).to eq(true)
+    end
+    
+
+
+    
+
+    
+
+    
   end
+  
 end
 
 RSpec.describe Lista do
