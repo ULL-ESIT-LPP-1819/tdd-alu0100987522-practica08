@@ -19,7 +19,7 @@ end
 
 class Paciente < Persona
     
- 
+    include Comparable
    
     attr_reader :peso, :talla
    
@@ -55,5 +55,8 @@ class Paciente < Persona
         return %Q(#{@nombre} #{@apellido} - Edad: #{@edad} años - Género: #{@genero} - Peso: #{@peso} kg - Talla: #{@talla} m.)
     end
     
-
+    def <=>(another)
+    imc_calculo <=> another.imc_calculo
+    end
+    
 end
