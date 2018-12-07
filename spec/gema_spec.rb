@@ -56,7 +56,7 @@ RSpec.describe Lista do
     
     
     before :all do
-       @lista = Lista.new()
+        @lista = Lista.new()
     end
     
     context "Lista de etiquetas, práctica 8" do
@@ -117,11 +117,38 @@ RSpec.describe Lista do
         
     end
     
+    before(:context) do
+      @lista_individuos = Lista.new()  
+        @lista_individuos.push_head(Paciente.new("Juan", "Arvelo", 27,"Masculino", 77, 1.60))
+        @lista_individuos.push_head(Paciente.new("Alberto", "Sainz", 33, "Masculino", 49, 1.69))
+        @lista_individuos.push_head(Paciente.new("Marta", "Cruz", 29, "Femenino", 55, 1.60))
+        @lista_individuos.push_head(Paciente.new("Sara", "Pérez", 35, "Femenino", 80, 1.7))
+        @lista_individuos.push_head(Paciente.new("Rubén", "Solís", 25, "Masculino", 90, 1.65))
+      
+      @lista_etiquetas = Lista.new()
+            @lista_etiquetas.push_head(Etiqueta.new("Magdalena", 50, 30, 10, 13, 20, 4))
+            @lista_etiquetas.push_head(Etiqueta.new("Leche", 32, 30, 10, 15, 20, 3))
+            @lista_etiquetas.push_head(Etiqueta.new("Millos", 37, 29, 14, 14, 23, 7))
+            @lista_etiquetas.push_head(Etiqueta.new("Anchoas", 22, 11, 10, 13, 17, 9))
+            @lista_etiquetas.push_head(Etiqueta.new("Manzana", 34, 20, 19, 33, 20, 4))
+            @lista_etiquetas.push_head(Etiqueta.new("Jamón", 52, 40, 10, 16, 20, 10))
+      
+    end
+    
     context "Listas pruebas práctica 9." do
+      
+      context "Enumerable individuos." do
+        
+      end
+      
+      context "Enumerable etiquetas." do
+        
+      end
       
     end
     
 end
+
 
 RSpec.describe Persona do
     

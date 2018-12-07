@@ -1,5 +1,7 @@
 class Lista
     
+
+    
     attr_reader :head, :tail
     
     Node = Struct.new(:value, :next, :prev)
@@ -80,6 +82,8 @@ class Lista
         end
         return str
     end
+    
+
     
     
 end
