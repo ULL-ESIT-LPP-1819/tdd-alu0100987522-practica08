@@ -146,6 +146,10 @@ RSpec.describe Lista do
           expect(@lista_individuos.select{|i| i.between?(@pac2, @pac1)}).to eq([@pac1,@pac2,@pac3])
         end
         
+        it "Max individuos." do
+          expect(@lista_individuos.max).to eq(@pac1)
+        end
+        
       end
       
       context "Enumerable etiquetas." do
@@ -156,8 +160,11 @@ RSpec.describe Lista do
         it "Select etiquetas." do
           expect(@lista_etiquetas.select{|i| i.between?(@et2, @et1)}).to eq([@et1,@et2,@et3])
         end
-      end
       
+        it "Max etiquetas." do
+          expect(@lista_etiquetas.max).to eq(@et1)
+        end
+      end
       
     end
     
