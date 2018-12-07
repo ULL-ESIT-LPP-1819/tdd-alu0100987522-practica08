@@ -154,6 +154,10 @@ RSpec.describe Lista do
           expect(@lista_individuos.min).to eq(@pac2)
         end  
         
+        it "Sort individuos." do
+          expect(@lista_individuos.sort).to eq([@pac2, @pac3, @pac1])
+        end  
+        
       end
       
       context "Enumerable etiquetas." do
@@ -171,6 +175,10 @@ RSpec.describe Lista do
       
         it "Min etiquetas." do
           expect(@lista_etiquetas.min).to eq(@et2)
+        end  
+        
+        it "Sort etiquetas." do
+          expect(@lista_etiquetas.sort).to eq([@et2, @et3, @et1])
         end  
       
       end
