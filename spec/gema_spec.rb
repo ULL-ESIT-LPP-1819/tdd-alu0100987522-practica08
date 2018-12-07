@@ -142,11 +142,22 @@ RSpec.describe Lista do
           expect(@lista_individuos.collect{|i| i.to_s}).to eq(["#{@pac1}","#{@pac2}","#{@pac3}"])
         end
         
+        it "Select etiquetas." do
+          expect(@lista_individuos.select{|i| i.between?(@pac2, @pac1)}).to eq([@pac1,@pac2,@pac3])
+        end
+        
+      end
       
       context "Enumerable etiquetas." do
         it "Collect etiquetas." do
           expect(@lista_etiquetas.collect{|i| i.to_s}).to eq(["#{@et1}","#{@et2}","#{@et3}"])
         end
+        
+        it "Select etiquetas." do
+          expect(@lista_etiquetas.select{|i| i.between?(@et2, @et1)}).to eq([@et1,@et2,@et3])
+        end
+      end
+      
       
     end
     
