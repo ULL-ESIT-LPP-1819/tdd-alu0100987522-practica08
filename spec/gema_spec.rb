@@ -150,6 +150,10 @@ RSpec.describe Lista do
           expect(@lista_individuos.max).to eq(@pac1)
         end
         
+        it "Min individuos." do
+          expect(@lista_individuos.min).to eq(@pac2)
+        end  
+        
       end
       
       context "Enumerable etiquetas." do
@@ -164,6 +168,11 @@ RSpec.describe Lista do
         it "Max etiquetas." do
           expect(@lista_etiquetas.max).to eq(@et1)
         end
+      
+        it "Min etiquetas." do
+          expect(@lista_etiquetas.min).to eq(@et2)
+        end  
+      
       end
       
     end
