@@ -56,11 +56,11 @@ RSpec.describe Lista do
     
     
     before :all do
-        @lista = Lista.new()
+      @lista = Lista.new()
     end
     
     context "Lista de etiquetas, práctica 8" do
-    
+
         it "Clase lista tiene atributos." do
            expect(@lista).to have_attributes(:head  => nil, :tail => nil)
         end
@@ -117,33 +117,36 @@ RSpec.describe Lista do
         
     end
     
-    before(:context) do
-      @lista_individuos = Lista.new()  
-        @lista_individuos.push_head(Paciente.new("Juan", "Arvelo", 27,"Masculino", 77, 1.60))
-        @lista_individuos.push_head(Paciente.new("Alberto", "Sainz", 33, "Masculino", 49, 1.69))
-        @lista_individuos.push_head(Paciente.new("Marta", "Cruz", 29, "Femenino", 55, 1.60))
-        @lista_individuos.push_head(Paciente.new("Sara", "Pérez", 35, "Femenino", 80, 1.7))
-        @lista_individuos.push_head(Paciente.new("Rubén", "Solís", 25, "Masculino", 90, 1.65))
+    before :context do
+      @lista_individuos = Lista.new()
+      @pac1 = Paciente.new("Juan", "Arvelo", 27,"Masculino", 77, 1.60)
+      @pac2 = Paciente.new("Alberto", "Sainz", 33, "Masculino", 49, 1.69)
+      @pac3 = Paciente.new("Marta", "Cruz", 29, "Femenino", 55, 1.60)
+      @lista_individuos.push_head(@pac1)
+      @lista_individuos.push_head(@pac2)
+      @lista_individuos.push_head(@pac3)
       
       @lista_etiquetas = Lista.new()
-            @lista_etiquetas.push_head(Etiqueta.new("Magdalena", 50, 30, 10, 13, 20, 4))
-            @lista_etiquetas.push_head(Etiqueta.new("Leche", 32, 30, 10, 15, 20, 3))
-            @lista_etiquetas.push_head(Etiqueta.new("Millos", 37, 29, 14, 14, 23, 7))
-            @lista_etiquetas.push_head(Etiqueta.new("Anchoas", 22, 11, 10, 13, 17, 9))
-            @lista_etiquetas.push_head(Etiqueta.new("Manzana", 34, 20, 19, 33, 20, 4))
-            @lista_etiquetas.push_head(Etiqueta.new("Jamón", 52, 40, 10, 16, 20, 10))
-      
+      @et1 = Etiqueta.new("Magdalena", 50, 30, 10, 13, 20, 4)
+      @et2 = Etiqueta.new("Leche", 32, 30, 10, 15, 20, 3)
+      @et3 = Etiqueta.new("Millos", 37, 29, 14, 14, 23, 7)
+      @lista_etiquetas.push_head(@et1)
+      @lista_etiquetas.push_head(@et2)
+      @lista_etiquetas.push_head(@et3)
     end
     
     context "Listas pruebas práctica 9." do
-      
+    
       context "Enumerable individuos." do
+        it "Collect individuos." do
+          expect(@lista_individuos.collect{|i| i.to_s}).to eq(["#{@pac1}","#{@pac2}","#{@pac3}"])
+        end
         
-      end
       
       context "Enumerable etiquetas." do
-        
-      end
+        it "Collect etiquetas." do
+          expect(@lista_etiquetas.collect{|i| i.to_s}).to eq(["#{@et1}","#{@et2}","#{@et3}"])
+        end
       
     end
     
