@@ -2,7 +2,7 @@ module Gema
   VERSION = "0.1.0"
 end
 
-class Alimento
+class Etiqueta
     VERSION = "0.1.0"
 end
 
