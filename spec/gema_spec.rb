@@ -119,9 +119,9 @@ RSpec.describe Lista do
     
     before :context do
       @lista_individuos = Lista.new()
-      @pac1 = Paciente.new("Juan", "Arvelo", 27,"Masculino", 77, 1.60)
-      @pac2 = Paciente.new("Alberto", "Sainz", 33, "Masculino", 49, 1.69)
-      @pac3 = Paciente.new("Marta", "Cruz", 29, "Femenino", 55, 1.60)
+      @pac1 = Paciente.new("Juan", "Arvelo", 27,"Masculino", 77, 1.60, 0.0)
+      @pac2 = Paciente.new("Alberto", "Sainz", 33, "Masculino", 49, 1.69, 0.12)
+      @pac3 = Paciente.new("Marta", "Cruz", 29, "Femenino", 55, 1.60, 0.12)
       @lista_individuos.push_head(@pac1)
       @lista_individuos.push_head(@pac2)
       @lista_individuos.push_head(@pac3)
@@ -224,9 +224,11 @@ end
 RSpec.describe Paciente do
   
   before :all do
-    @individuo = Paciente.new("Juan", "Arvelo", 27,"Masculino", 77, 1.60) #nombre, apellido, sexo, edad, peso, talla
-    @individuo2 = Paciente.new("Marta", "Cruz", 29, "Femenino", 55, 1.60)
-    @individuo3 = Paciente.new("Rubén", "Solís", 25, "Masculino", 90, 1.65)
+    @individuo = Paciente.new("Juan", "Arvelo", 27,"Masculino", 77, 1.60, 0.0) #nombre, apellido, sexo, edad, peso, talla, factor act. fisica
+    @individuo2 = Paciente.new("Marta", "Cruz", 29, "Femenino", 55, 1.60, 0.12)
+    @individuo3 = Paciente.new("Rubén", "Solís", 25, "Masculino", 90, 1.65, 0.27)
+    @individuo4 = Paciente.new("Sara", "Pérez", 35, "Femenino", 80, 1.7, 0.54)
+    @individuo5 = Paciente.new("Alberto", "Sainz", 33, "Masculino", 49, 1.69, 0.12)
   end
   
   context "Paciente pruebas práctica 8." do
@@ -255,7 +257,7 @@ RSpec.describe Paciente do
     end  
    
     it "Se puede imprimir por pantalla los datos de un Paciente." do
-      expect(@individuo.to_s()).to eq("Juan Arvelo - Edad: 27 años - Género: Masculino - Peso: 77 kg - Talla: 1.6 m.")
+      expect(@individuo.to_s()).to eq("Juan Arvelo - Edad: 27 años - Género: Masculino - Peso: 77 kg - Talla: 1.6 m - Factor act. física: 0.0.")
     end
     
     it "Se puede insertar a un Paciente en una Lista." do
@@ -273,16 +275,16 @@ RSpec.describe Paciente do
     it "Se puede imprimir los datos de un Paciente, desde una Lista." do
       list = Lista.new()
       list.push_head(@individuo)
-      expect(list.to_s()).to eq("Juan Arvelo - Edad: 27 años - Género: Masculino - Peso: 77 kg - Talla: 1.6 m.")    
+      expect(list.to_s()).to eq("Juan Arvelo - Edad: 27 años - Género: Masculino - Peso: 77 kg - Talla: 1.6 m - Factor act. física: 0.0.")    
     end
     
     it "Se puede clasificar una Lista de Pacientes según su IMC." do
       list = Lista.new()
       list.push_head(@individuo) #El individuo que ya teniamos creado = Obesidad
-      list.push_head(Paciente.new("Alberto", "Sainz", 33, "Masculino", 49, 1.69)) # = Delgado
-      list.push_head(Paciente.new("Marta", "Cruz", 29, "Femenino", 55, 1.60)) # = Aceptable
-      list.push_head(Paciente.new("Sara", "Pérez", 35, "Femenino", 80, 1.7)) # = Sobrepeso
-      list.push_head(Paciente.new("Rubén", "Solís", 25, "Masculino", 90, 1.65)) # = Obesidad
+      list.push_head(Paciente.new("Alberto", "Sainz", 33, "Masculino", 49, 1.69, 0.12)) # = Delgado
+      list.push_head(Paciente.new("Marta", "Cruz", 29, "Femenino", 55, 1.60, 0.27)) # = Aceptable
+      list.push_head(Paciente.new("Sara", "Pérez", 35, "Femenino", 80, 1.7, 0.54)) # = Sobrepeso
+      list.push_head(Paciente.new("Rubén", "Solís", 25, "Masculino", 90, 1.65, 0.0)) # = Obesidad
       pac_delgado = []
       pac_aceptable = []
       pac_sobrepeso = []
@@ -340,6 +342,14 @@ RSpec.describe Paciente do
     
     it "Compara si el IMC está dentro de un rango (between?)." do
       expect(@individuo.between?(@individuo2, @individuo3)).to eq(true)
+    end
+    
+  end
+  
+  context "Paciente pruebas práctica 10." do
+    
+    it "Gasto energético basal." do
+      expect(@individuo.gasto_energetico_basal()).to eq(650)
     end
     
   end

@@ -21,12 +21,15 @@ class Paciente < Persona
     
     include Comparable
    
-    attr_reader :peso, :talla
+    attr_reader :peso, :talla, :actfis
    
-    def initialize(nombre, apellido, edad, genero, peso, talla)
+    def initialize(nombre, apellido, edad, genero, peso, talla, actfis)
        super(nombre, apellido, edad, genero)
        @peso = peso
        @talla = talla
+       @actfis = actfis
+       @genero = genero
+       @edad = edad
     end
    
     def imc_calculo
@@ -52,11 +55,13 @@ class Paciente < Persona
     end
     
     def to_s
-        return %Q(#{@nombre} #{@apellido} - Edad: #{@edad} años - Género: #{@genero} - Peso: #{@peso} kg - Talla: #{@talla} m.)
+        return %Q(#{@nombre} #{@apellido} - Edad: #{@edad} años - Género: #{@genero} - Peso: #{@peso} kg - Talla: #{@talla} m - Factor act. física: #{@actfis}.)
     end
     
     def <=>(another)
     imc_calculo <=> another.imc_calculo
     end
+    
+    
     
 end
