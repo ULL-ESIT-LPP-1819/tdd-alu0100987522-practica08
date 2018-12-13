@@ -360,6 +360,10 @@ RSpec.describe Paciente do
       expect(@individuo.gasto_actividad_fisica()).to eq(0)
     end
     
+    it "Gasto energético total." do
+      expect(@individuo.gasto_energetico_total()).to eq(715)
+    end
+    
   end
   
 end

@@ -80,5 +80,6 @@ class Paciente < Persona
     def gasto_actividad_fisica
        gasto_energetico_basal() * actfis 
     end
+
     
 end
