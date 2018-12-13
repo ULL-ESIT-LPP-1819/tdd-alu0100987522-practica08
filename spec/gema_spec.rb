@@ -352,6 +352,10 @@ RSpec.describe Paciente do
       expect(@individuo.gasto_energetico_basal()).to eq(650)
     end
     
+    it "Efecto termógeno." do
+      expect(@individuo.efecto_termogeno()).to eq(65)
+    end
+    
   end
   
 end
