@@ -80,6 +80,9 @@ class Paciente < Persona
     def gasto_actividad_fisica
        gasto_energetico_basal() * actfis 
     end
-
+    
+    def gasto_energetico_total
+        gasto_energetico_basal() + efecto_termogeno() + gasto_actividad_fisica()
+    end
     
 end
