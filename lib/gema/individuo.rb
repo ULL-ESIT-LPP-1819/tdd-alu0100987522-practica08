@@ -62,6 +62,17 @@ class Paciente < Persona
     imc_calculo <=> another.imc_calculo
     end
     
+    def gasto_energetico_basal 
+        geb = 0
+        if genero == "Masculino"
+            geb = 10.0*peso + 6.25*talla - 5.0*edad + 5
+        end
+        if genero == "Femenino"
+            geb = 10.0*peso + 6.25*talla - 5.0*edad - 161
+        end
+        return geb
+    end
+    
     
     
 end
