@@ -77,5 +77,6 @@ class Paciente < Persona
         gasto_energetico_basal() * 0.10
     end
     
+
     
 end

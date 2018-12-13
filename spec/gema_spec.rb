@@ -356,6 +356,10 @@ RSpec.describe Paciente do
       expect(@individuo.efecto_termogeno()).to eq(65)
     end
     
+    it "Gasto actividad fisica." do
+      expect(@individuo.gasto_actividad_fisica()).to eq(0)
+    end
+    
   end
   
 end
