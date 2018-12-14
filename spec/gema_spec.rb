@@ -123,7 +123,7 @@ RSpec.describe Lista do
       @pac2 = Paciente.new("Alberto", "Sainz", 33, "Masculino", 49, 1.69, 0.12)
       @pac3 = Paciente.new("Marta", "Cruz", 29, "Femenino", 55, 1.60, 0.12)
       @pac4 = Paciente.new("Rubén", "Solís", 25, "Masculino", 90, 1.65, 0.27)
-      @pac5 = Paciente.new("Sara", "Pérez", 35, "Femenino", 80, 1.7, 0.54)
+      @pac5 = Paciente.new("Sara", "Pérez", 41, "Femenino", 89, 1.7, 0.54)
       @lista_individuos.push_head(@pac1)
       @lista_individuos.push_head(@pac2)
       @lista_individuos.push_head(@pac3)
@@ -228,6 +228,33 @@ RSpec.describe Lista do
       it "Sumar val. energético de un menú." do
         acc = @menu1.reduce(0) {|n, al| n+al.val_energetico()}
         expect(acc).to eq(695)
+      end
+      
+      it "Asocia correctamente un menú a un paciente." do
+        men1 = @menu1.reduce(0) {|n, al| n+al.val_energetico()}
+        men2 = @menu2.reduce(0) {|n, al| n+al.val_energetico()}
+        men3 = @menu3.reduce(0) {|n, al| n+al.val_energetico()}
+        men4 = @menu4.reduce(0) {|n, al| n+al.val_energetico()}
+        men5 = @menu5.reduce(0) {|n, al| n+al.val_energetico()}
+        menus = [men1, men2, men3, men4, men5]
+        @men_pac = Lista.new()  #donde ordeno pacientes respecto menús
+        
+        @pacientes.each do |i|
+          g_e_t = i.gasto_energetico_total()
+          
+          menus.each do |j|
+            m_err = j*0.1
+            
+            if(g_e_t.between?(j-m_err, j+m_err))
+              @men_pac.push_head(i)
+            end
+            
+          end
+          
+        end
+        k = 0
+        expect(@men_pac.collect{|n| [n.nombre, "menu#{k+1}"]}).to eq(@men_pac.collect{|n| [n.nombre, "menu#{k+1}"]})
+        
       end
       
     end
