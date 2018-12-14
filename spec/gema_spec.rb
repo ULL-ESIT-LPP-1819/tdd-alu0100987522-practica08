@@ -122,10 +122,12 @@ RSpec.describe Lista do
       @pac1 = Paciente.new("Juan", "Arvelo", 27,"Masculino", 77, 1.60, 0.0)
       @pac2 = Paciente.new("Alberto", "Sainz", 33, "Masculino", 49, 1.69, 0.12)
       @pac3 = Paciente.new("Marta", "Cruz", 29, "Femenino", 55, 1.60, 0.12)
+      @pac4 = Paciente.new("Rubén", "Solís", 25, "Masculino", 90, 1.65, 0.27)
+      @pac5 = Paciente.new("Sara", "Pérez", 35, "Femenino", 80, 1.7, 0.54)
       @lista_individuos.push_head(@pac1)
       @lista_individuos.push_head(@pac2)
       @lista_individuos.push_head(@pac3)
-      
+
       @lista_etiquetas = Lista.new()
       @et1 = Etiqueta.new("Magdalena", 50, 30, 10, 13, 20, 4)
       @et2 = Etiqueta.new("Leche", 32, 30, 10, 15, 20, 3)
@@ -133,6 +135,42 @@ RSpec.describe Lista do
       @lista_etiquetas.push_head(@et1)
       @lista_etiquetas.push_head(@et2)
       @lista_etiquetas.push_head(@et3)
+                                      
+      @al1 = Etiqueta.new("Tortilla", 29, 19, 13, 4, 8, 7)    # 345
+      @al2 = Etiqueta.new("Pimientos", 15, 2, 9, 2, 8, 5)     # 203
+      @al3 = Etiqueta.new("Ensalada", 7, 1, 6, 4, 4, 3)       # 103
+      @al4 = Etiqueta.new("Pollo", 30, 7, 18, 7, 14, 5)       # 398
+      @al5 = Etiqueta.new("Tallarines", 25, 10, 14, 4, 4, 6)  # 297
+      
+      @menu1 = Lista.new()
+      @menu1.push_head(@al4)
+      @menu1.push_head(@al5)
+      
+      @menu2 = Lista.new()
+      @menu2.push_head(@al2)
+      @menu2.push_head(@al3)
+      
+      @menu3 = Lista.new()
+      @menu3.push_head(@al1)
+      @menu3.push_head(@al2)
+      @menu3.push_head(@al4)
+      
+      @menu4 = Lista.new()
+      @menu4.push_head(@al3)
+      @menu4.push_head(@al4)
+      @menu4.push_head(@al5)
+
+      @menu5 = Lista.new()
+      @menu5.push_head(@al3)
+      @menu5.push_head(@al4)
+      
+      @pacientes = Lista.new()
+      @pacientes.push_head(@pac1) #menú :    al4+al5
+      @pacientes.push_head(@pac2) # =>       al2+al3
+      @pacientes.push_head(@pac3) # =>       al1+al2+al4
+      @pacientes.push_head(@pac4) # =>       al4+al5+al3
+      @pacientes.push_head(@pac5) # =>       al3+al4
+      
     end
     
     context "Listas pruebas práctica 9." do
@@ -185,6 +223,14 @@ RSpec.describe Lista do
       
     end
     
+    context "Listas prueba práctica 10." do
+      
+      it "Sumar val. energético de un menú." do
+        acc = @menu1.reduce(0) {|n, al| n+al.val_energetico()}
+        expect(acc).to eq(695)
+      end
+      
+    end
 end
 
 
