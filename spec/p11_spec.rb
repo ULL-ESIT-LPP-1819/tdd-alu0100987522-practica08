@@ -65,3 +65,41 @@ RSpec.describe Paciente do
 end
 
 
+#-----------------------------------------------------------------------
+
+RSpec.describe Etiqueta do
+    
+    before :each do
+        @al1 = Etiqueta.new("Tortilla", 29, 19, 13, 4, 8, 7)    
+        @al2 = Etiqueta.new("Pimientos", 15, 2, 9, 2, 8, 5)     
+        @al3 = Etiqueta.new("Ensalada", 7, 1, 6, 4, 4, 3)       
+        @al4 = Etiqueta.new("Pollo", 30, 7, 18, 7, 14, 5)   
+        @al5 = Etiqueta.new("Tallarines", 25, 10, 14, 4, 4, 6) 
+        @al6 = Etiqueta.new("Croquetas", 34, 12, 4, 5, 6, 1)
+        @al7 = Etiqueta.new("Setas", 22, 31, 41, 2, 1, 5)
+        @al8= Etiqueta.new("Lasaña", 31, 21, 32, 4, 5, 10)
+        @al9 = Etiqueta.new("Bistec", 77, 23, 12, 3, 7, 5)
+        @al10 = Etiqueta.new("Papaya", 25, 54, 12, 4, 6, 9)
+        @men1 = [@al3, @al1, @al6]
+        @men2 = [@al6, @al5, @al2, @al9]
+        @men3 = [@al8, @al9, @al7]
+        @men4 = [@al1, @al9, @al7, @al5]
+        @men5 = [@al4, @al7, @al9, @al6]
+        @men6 = [@al1, @al3, @al4]
+        @men7 = [@al2, @al4, @al6, @al8]
+        @men8 = [@al1, @al2, @al3, @al7, @al9]
+        @men9 = [@al2, @al5, @al4, @al9, @al6, @al1]
+        @men10 = [@al3, @al9, @al5]
+        
+        @menus = [@men1, @men2, @men3, @men4, @men5, @men6, @men7, @men8, @men9, @men10]
+    end
+    
+    it "Benchmark Etiquetas" do
+        Benchmark.bmbm do |test| 
+            test.report("Método sort array etiquetas\n") {@menus.dup.sort}   
+        end
+    end
+    
+end
+
+
