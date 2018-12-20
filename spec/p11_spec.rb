@@ -17,7 +17,7 @@ RSpec.describe Paciente do
         @individuos.push_head(Paciente.new("Belén", "Portón", 21, "Femenino", 60, 1.67, 0.27))
     end
     
-    def bubbleforlist(lista)!
+    def bubbleforlist(lista)
         v = lista.collect{|y| y}
         for i in 0..v.size
             uno = v[i].gasto_energetico_total if(i<v.size)
@@ -33,7 +33,7 @@ RSpec.describe Paciente do
         return v
     end
     
-    def bubbleeachlist(lista)!
+    def bubbleeachlist(lista)
         v = lista.collect{|y| y}
         v.each do |i|
             uno = i.gasto_energetico_total
@@ -95,7 +95,7 @@ RSpec.describe Etiqueta do
     end
     
     
-    def bubbleforarray (menuses)!
+    def bubbleforarray(menuses)
         for i in 0..menuses.size
             uno = menuses[i].reduce(0) {|sum, n| sum + n.val_energetico} if(i<menuses.size)
             for j in i+1..menuses.size-1
@@ -108,7 +108,24 @@ RSpec.describe Etiqueta do
             end
         end
         return menuses
-    end    
+    end  
+    
+    def bubbleeacharray(menuses)
+        menuses.each do |i|
+            uno = i.reduce(0) {|sum, n| sum + n.val_energetico}
+            menuses.each_with_index do |a, index|
+                dos = a.reduce(0) {|sum, n| sum + n.val_energetico}
+                aux = menuses.size-1
+                break if (index == aux)
+                if dos > uno
+                    aux = menuses[index+1]
+                    menuses[index+1] = menuses[index]
+                    menuses[index] = aux
+                end
+            end
+        end
+        return menuses 
+    end
 
     
     it "Benchmark Etiquetas" do
