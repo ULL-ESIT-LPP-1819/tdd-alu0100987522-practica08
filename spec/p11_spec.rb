@@ -94,9 +94,26 @@ RSpec.describe Etiqueta do
         @menus = [@men1, @men2, @men3, @men4, @men5, @men6, @men7, @men8, @men9, @men10]
     end
     
+    
+    def bubbleforarray (menuses)!
+        for i in 0..menuses.size
+            uno = menuses[i].reduce(0) {|sum, n| sum + n.val_energetico} if(i<menuses.size)
+            for j in i+1..menuses.size-1
+                dos = menuses[j].reduce(0) {|sum, n| sum + n.val_energetico}
+                if(uno > dos)
+                    aux = menuses[j]
+                    menuses[j] = menuses[i]
+                    menuses[i] = aux
+                end
+            end
+        end
+        return menuses
+    end    
+
+    
     it "Benchmark Etiquetas" do
         Benchmark.bmbm do |test| 
-            test.report("Método sort array etiquetas\n") {@menus.dup.sort}   
+            test.report("Método sort array etiquetas\n") {@menus.dup.sort}
         end
     end
     
