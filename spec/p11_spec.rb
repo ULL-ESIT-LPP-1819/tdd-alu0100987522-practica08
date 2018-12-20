@@ -57,6 +57,7 @@ RSpec.describe Paciente do
             Benchmark.bmbm do |test|
                 test.report("Método sort lista individuos\n") {@individuos.dup.sort}
                 test.report("Bubble con for lista individuos\n") {bubbleforlist(@individuos.dup)}
+                test.report("Bubble con each lista individuos\n") {bubbleeachlist(@individuos.dup)}
             end
     end
     
