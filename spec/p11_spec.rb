@@ -132,6 +132,7 @@ RSpec.describe Etiqueta do
         Benchmark.bmbm do |test| 
             test.report("Método sort array etiquetas\n") {@menus.dup.sort}
             test.report("Bubble con for array etiquetas\n") {bubbleforarray@menus.dup}
+            test.report("Bubble con each array etiquetas\n") {bubbleeacharray@menus.dup}
         end
     end
     
