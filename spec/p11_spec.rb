@@ -33,6 +33,24 @@ RSpec.describe Paciente do
         return v
     end
     
+    def bubbleeachlist(lista)!
+        v = lista.collect{|y| y}
+        v.each do |i|
+            uno = i.gasto_energetico_total
+            v.each_with_index do |a, index|
+                dos = a.gasto_energetico_total
+                aux = v.size-1
+                break if index == aux
+                if dos > uno
+                    aux = v[index+1]
+                    v[index+1] = v[index]
+                    v[index] = aux
+                end
+            end
+        end
+        return v 
+    end
+    
     
     
     it "Benchmark Individuos" do
