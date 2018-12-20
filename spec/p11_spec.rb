@@ -17,7 +17,11 @@ RSpec.describe Paciente do
         @individuos.push_head(Paciente.new("Belén", "Portón", 21, "Femenino", 60, 1.67, 0.27))
     end
     
-
+    it "Benchmark Individuos" do
+            Benchmark.bmbm do |test|
+                test.report("Método sort lista individuos\n") {@individuos.dup.sort}
+            end
+    end
     
     
 end
