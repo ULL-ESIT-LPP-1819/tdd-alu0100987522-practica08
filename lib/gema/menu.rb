@@ -22,7 +22,22 @@ class Menu
         output = @nombre
         output << "\t\t \"#{@titulo}\""
         output << "\n#{'=' * 50 }\n"
+        output << "\nTiempo estimado de ingesta: #{@ingesta.join(' -')} minutos.\n"
         
+        output << "-  Desayuno:\n"
+        @desayuno.each_with_index do |alimento, index|
+            output << "#{index+1}) #{alimento}\n"
+        end
+        
+        output << "\n-  Almuerzo:\n"
+        @almuerzo.each_with_index do |alimento, index|
+            output << "#{index+1}) #{alimento}\n"
+        end
+        
+        output << "\n-  Cena:\n"
+        @cena.each_with_index do |alimento, index|
+            output << "#{index+1}) #{alimento}\n"
+        end
         
         output
     end
@@ -71,6 +86,8 @@ class Menu
         @cena << Etiqueta.new(alimento, grasas, gsat, carbh, azucar, protein, sal)
         
     end
+    
+    
     
 end
 
