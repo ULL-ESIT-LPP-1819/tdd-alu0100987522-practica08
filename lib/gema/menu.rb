@@ -88,7 +88,16 @@ class Menu
     end
     
     
-
+    def total_ve
+        
+       all = 0.0
+       all += @desayuno.map { |ali| ali.val_energetico }.reduce(:+)
+       all += @almuerzo.map { |ali| ali.val_energetico }.reduce(:+)
+       all += @cena.map { |ali| ali.val_energetico }.reduce(:+)
+       
+       return all.round(3)
+       
+    end
     
     
 end
