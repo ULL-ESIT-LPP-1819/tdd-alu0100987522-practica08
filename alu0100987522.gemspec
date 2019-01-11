@@ -1,11 +1,11 @@
 
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "gema/version"
+require "alu0100987522/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "gema"
-  spec.version       = Gema::VERSION
+  spec.name          = "alu0100987522"
+  spec.version       = Alu0100987522::VERSION
   spec.authors       = ["Aitor Hernández"]
   spec.email         = ["alu0100987522@ull.edu.es"]
 

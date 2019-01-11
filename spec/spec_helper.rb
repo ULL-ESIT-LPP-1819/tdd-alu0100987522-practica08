@@ -1,7 +1,7 @@
 require 'coveralls'
 Coveralls.wear!
 require "bundler/setup"
-require "gema"
+require "alu0100987522"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

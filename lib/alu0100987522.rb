@@ -1,0 +1,5 @@
+require "alu0100987522/version"
+require "alu0100987522/etiqueta"
+require "alu0100987522/lista"
+require "alu0100987522/individuo" 
+require "alu0100987522/menu"
