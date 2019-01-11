@@ -48,4 +48,8 @@ RSpec.describe Menu do
         expect(@menu1.to_s).to eq(@menu1.to_s)
     end
     
+    it "Se puede calcular el valor energético del menú." do
+        expect(@menu1.total_ve).to eq(921.9)
+    end
+    
 end
