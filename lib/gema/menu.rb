@@ -39,6 +39,8 @@ class Menu
             output << "#{index+1}) #{alimento}\n"
         end
         
+        output << "\n Valor energético total del menú: #{total_ve}\n"
+        
         output
     end
     
